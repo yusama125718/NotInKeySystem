@@ -12,13 +12,13 @@ public class NotInKeySystem : UdonSharpBehaviour
     [Header("アンロック時に表示するオブジェクト")]
     [SerializeField] private GameObject[] unlockobject;  
 
-    public override void Interact()
+    void Interact(VRCPlayerApi player)
     {
         if (!Networking.IsOwner(gameObject))
         {
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
-        for (int i=0;i>hideobject.Length;i++)
+        for (int i=0;i>unlockobject.Length;i++)
         {
             if (unlockobject[i] = null)
             {
@@ -33,7 +33,7 @@ public class NotInKeySystem : UdonSharpBehaviour
                 unlockobject[i].SetActive(true);
             }
         }
-        for (int i=0;i>showobject.Length;i++)
+        for (int i=0;i>lockobject.Length;i++)
         {
             if (lockobject[i] = null)
             {
