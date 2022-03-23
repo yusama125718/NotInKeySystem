@@ -14,12 +14,22 @@ public class NotInKeySystem : UdonSharpBehaviour
 
     void Interact(VRCPlayerApi player)
     {
-        if (!Networking.IsOwner(gameObject))
+        for (int i = 0;i < lockobject.Length;i++)
         {
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+            if (!Networking.IsOwner(lockobject[i]))
+            {
+                Networking.SetOwner(Networking.LocalPlayer, lockobject[i]);
+            }
+        }
+        for (int i = 0;i < unlockobject.Length;i++)
+        {
+            if (!Networking.IsOwner(unlockobject[i]))
+            {
+                Networking.SetOwner(Networking.LocalPlayer, unlockobject[i]);
+            }
         }
         for (int i=0;i>unlockobject.Length;i++)
-        {
+        {   
             if (unlockobject[i] = null)
             {
                 return;
@@ -34,7 +44,7 @@ public class NotInKeySystem : UdonSharpBehaviour
             }
         }
         for (int i=0;i>lockobject.Length;i++)
-        {
+        {   
             if (lockobject[i] = null)
             {
                 return;
